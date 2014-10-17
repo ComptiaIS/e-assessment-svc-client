@@ -1,0 +1,424 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://www.imsglobal.org/services/lis/pms2p0/wsdl11/sync/imspms_v2p0" elementFormDefault="qualified" targetNamespace="http://www.imsglobal.org/services/lis/pms2p0/wsdl11/sync/imspms_v2p0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="createPersonRequest">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="1" name="sourcedId" type="xs:string" />
+        <xs:element minOccurs="0" maxOccurs="1" name="personRecord" type="tns:PersonRecord.Type" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:complexType name="PersonRecord.Type">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="1" name="sourcedGUID" type="tns:SourcedGUID.Type" />
+      <xs:element minOccurs="0" maxOccurs="1" name="person" type="tns:Person.Type" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="SourcedGUID.Type">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="1" name="refAgentInstanceID" type="xs:normalizedString" />
+      <xs:element minOccurs="0" maxOccurs="1" name="sourcedId" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="Person.Type">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="formname" type="tns:FormName.Type" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="name" type="tns:Name.Type" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="address" type="tns:Address.Type" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="contactinfo" type="tns:ContactInfo.Type" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="demographics" type="tns:Demographics.Type" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="agent" type="tns:Agent.Type" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="roles" type="tns:EnterpriseRoles.Type" />
+      <xs:element minOccurs="0" maxOccurs="1" name="dataSource" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="extension" type="tns:IMSExtension.Type" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="FormName.Type">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="1" name="formnameType" type="tns:BaseValueToken.Type" />
+      <xs:element minOccurs="0" maxOccurs="1" name="formattedName" type="tns:Text.Type" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="BaseValueToken.Type">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="1" name="instanceIdentifier" type="tns:Text.Type" />
+      <xs:element minOccurs="0" maxOccurs="1" name="instanceVocabulary" type="xs:anyURI" />
+      <xs:element minOccurs="0" maxOccurs="1" name="instanceValue" type="tns:Text.Type" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="Text.Type">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="1" name="language" type="xs:normalizedString" />
+      <xs:element minOccurs="0" maxOccurs="1" name="textString" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="Name.Type">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="1" name="nameType" type="tns:BaseValueToken.Type" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="partName" type="tns:BaseValueSingle.Type" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="BaseValueSingle.Type">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="1" name="instanceIdentifier" type="tns:Text.Type" />
+      <xs:element minOccurs="0" maxOccurs="1" name="instanceVocabulary" type="xs:anyURI" />
+      <xs:element minOccurs="0" maxOccurs="1" name="instanceName" type="tns:Text.Type" />
+      <xs:element minOccurs="0" maxOccurs="1" name="instanceValue" type="tns:Text.Type" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="Address.Type">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="1" name="addressType" type="tns:BaseValueToken.Type" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="addressPart" type="tns:BaseValueSingle.Type" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ContactInfo.Type">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="1" name="contactinfoType" type="tns:BaseValueToken.Type" />
+      <xs:element minOccurs="0" maxOccurs="1" name="contactinfoValue" type="tns:Text.Type" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="Demographics.Type">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="1" name="demographicsType" type="tns:BaseValueToken.Type" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="representation" type="tns:Representation.Type" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="eventDate" type="tns:BaseValueSingle.Type" />
+      <xs:element minOccurs="0" maxOccurs="1" name="gender" type="tns:Gender.Type" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="demographicInfo" type="tns:BaseValueSingle.Type" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="Representation.Type">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="1" name="representationType" type="tns:BaseValueToken.Type" />
+      <xs:element minOccurs="1" maxOccurs="1" name="date" type="xs:date" />
+      <xs:element minOccurs="0" maxOccurs="1" name="description" type="tns:Description.Type" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="Description.Type">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="1" name="shortDescription" type="tns:Text.Type" />
+      <xs:element minOccurs="0" maxOccurs="1" name="longDescription" type="tns:Text.Type" />
+      <xs:element minOccurs="0" maxOccurs="1" name="fullDescription" type="tns:FullDescription.Type" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="FullDescription.Type">
+    <xs:sequence>
+      <xs:element minOccurs="1" maxOccurs="1" name="mediamode" type="tns:MediaMode.Type" />
+      <xs:element minOccurs="1" maxOccurs="1" name="contentRefType" type="tns:ContentRefType.Type" />
+      <xs:element minOccurs="0" maxOccurs="1" name="mimeType" type="xs:normalizedString" />
+      <xs:element minOccurs="0" maxOccurs="1" name="descriptionText" type="tns:Text.Type" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:simpleType name="MediaMode.Type">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="uri" />
+      <xs:enumeration value="entityref" />
+      <xs:enumeration value="base64" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="ContentRefType.Type">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="text" />
+      <xs:enumeration value="image" />
+      <xs:enumeration value="audio" />
+      <xs:enumeration value="video" />
+      <xs:enumeration value="application" />
+      <xs:enumeration value="applet" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="Gender.Type">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="male" />
+      <xs:enumeration value="female" />
+      <xs:enumeration value="unknown" />
+      <xs:enumeration value="other" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="Agent.Type">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="1" name="agentType" type="tns:BaseValueToken.Type" />
+      <xs:element minOccurs="0" maxOccurs="1" name="agentId" type="tns:Text.Type" />
+      <xs:element minOccurs="0" maxOccurs="1" name="agentDomain" type="tns:Text.Type" />
+      <xs:element minOccurs="0" maxOccurs="1" name="description" type="tns:Description.Type" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="EnterpriseRoles.Type">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="1" name="enterpriserolesType" type="tns:BaseValueSingle.Type" />
+      <xs:element minOccurs="0" maxOccurs="1" name="systemRole" type="tns:BaseValueToken.Type" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="institutionRole" type="tns:InstitutionRole.Type" />
+      <xs:element minOccurs="0" maxOccurs="1" name="userId" type="tns:UserId.Type" />
+      <xs:element minOccurs="0" maxOccurs="1" name="enrollment" type="tns:BaseValueSingle.Type" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="InstitutionRole.Type">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="1" name="institutionroletype" type="tns:BaseValueToken.Type" />
+      <xs:element minOccurs="1" maxOccurs="1" name="primaryroletype" type="xs:boolean" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="UserId.Type">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="1" name="userIdValue" type="tns:Text.Type" />
+      <xs:element minOccurs="0" maxOccurs="1" name="userIdType" type="tns:Text.Type" />
+      <xs:element minOccurs="0" maxOccurs="1" name="password" type="tns:Text.Type" />
+      <xs:element minOccurs="0" maxOccurs="1" name="pwEncryptionType" type="tns:Text.Type" />
+      <xs:element minOccurs="0" maxOccurs="1" name="authenticationType" type="tns:Text.Type" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="IMSExtension.Type">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="1" name="extensionNameVocabulary" type="xs:anyURI" />
+      <xs:element minOccurs="0" maxOccurs="1" name="extensionTypeVocabulary" type="xs:anyURI" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="extensionField" type="tns:ExtensionField.Type" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ExtensionField.Type">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="1" name="fieldName" type="xs:normalizedString" />
+      <xs:element minOccurs="0" maxOccurs="1" name="fieldType" type="xs:normalizedString" />
+      <xs:element minOccurs="0" maxOccurs="1" name="fieldValue" type="xs:normalizedString" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="imsx_syncRequestHeaderInfo" type="tns:imsx_RequestHeaderInfo.Type" />
+  <xs:complexType name="imsx_RequestHeaderInfo.Type">
+    <xs:sequence>
+      <xs:element minOccurs="1" maxOccurs="1" name="imsx_version" type="tns:GWSVersionValue.Type" />
+      <xs:element minOccurs="0" maxOccurs="1" name="imsx_messageIdentifier" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:simpleType name="GWSVersionValue.Type">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="V1.0" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="imsx_syncResponseHeaderInfo" type="tns:imsx_ResponseHeaderInfo.Type" />
+  <xs:complexType name="imsx_ResponseHeaderInfo.Type">
+    <xs:sequence>
+      <xs:element minOccurs="1" maxOccurs="1" name="imsx_version" type="tns:GWSVersionValue.Type" />
+      <xs:element minOccurs="0" maxOccurs="1" name="imsx_messageIdentifier" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="imsx_statusInfo" type="tns:imsx_StatusInfo.Type" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="imsx_StatusInfo.Type">
+    <xs:sequence>
+      <xs:element minOccurs="1" maxOccurs="1" name="imsx_codeMajor" type="tns:imsx_CodeMajor.Type" />
+      <xs:element minOccurs="1" maxOccurs="1" name="imsx_severity" type="tns:imsx_Severity.Type" />
+      <xs:element minOccurs="0" maxOccurs="1" name="imsx_messageRefIdentifier" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="imsx_operationRefIdentifier" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="imsx_description" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="imsx_codeMinor" type="tns:ArrayOfImsx_CodeMinorFieldType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:simpleType name="imsx_CodeMajor.Type">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="success" />
+      <xs:enumeration value="processing" />
+      <xs:enumeration value="failure" />
+      <xs:enumeration value="unsupported" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="imsx_Severity.Type">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="status" />
+      <xs:enumeration value="warning" />
+      <xs:enumeration value="error" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="ArrayOfImsx_CodeMinorFieldType">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="imsx_codeMinorField" type="tns:imsx_CodeMinorField.Type" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="imsx_CodeMinorField.Type">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="1" name="imsx_codeMinorFieldName" type="xs:string" />
+      <xs:element minOccurs="1" maxOccurs="1" name="imsx_codeMinorFieldValue" type="tns:imsx_CodeMinorValue.Type" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:simpleType name="imsx_CodeMinorValue.Type">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="fullsuccess" />
+      <xs:enumeration value="createsuccess" />
+      <xs:enumeration value="idallocfail" />
+      <xs:enumeration value="overflowfail" />
+      <xs:enumeration value="idallocinusefail" />
+      <xs:enumeration value="invaliddata" />
+      <xs:enumeration value="incompletedata" />
+      <xs:enumeration value="partialdatastorage" />
+      <xs:enumeration value="unknownobject" />
+      <xs:enumeration value="deletefailure" />
+      <xs:enumeration value="targetreadfailure" />
+      <xs:enumeration value="nosourcedids" />
+      <xs:enumeration value="savepointerror" />
+      <xs:enumeration value="savepointsyncerror" />
+      <xs:enumeration value="unknownquery" />
+      <xs:enumeration value="unknownvocabulary" />
+      <xs:enumeration value="unknownmdvocabulary" />
+      <xs:enumeration value="unknownextension" />
+      <xs:enumeration value="toomuchdata" />
+      <xs:enumeration value="targetisbusy" />
+      <xs:enumeration value="unauthorizedrequest" />
+      <xs:enumeration value="linkfailure" />
+      <xs:enumeration value="unsupportedLIS" />
+      <xs:enumeration value="unsupportedLISoperation" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="createByProxyPersonRequest">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="1" name="personRecord" type="tns:PersonRecord.Type" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="createByProxyPersonResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="1" name="sourcedId" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="deletePersonRequest">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="1" name="sourcedId" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="readPersonRequest">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="1" name="sourcedId" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="readPersonResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="1" name="personRecord" type="tns:PersonRecord.Type" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="readPersonCoreRequest">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="1" name="sourcedId" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="readPersonCoreResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="1" name="personCore" type="tns:PersonCore.Type" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:complexType name="PersonCore.Type">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="1" name="sourcedId" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="formname" type="tns:FormName.Type" />
+      <xs:element minOccurs="0" maxOccurs="1" name="userId" type="tns:UserId.Type" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="readAllPersonIdsRequest" />
+  <xs:complexType name="ArrayOfString">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="sourcedId" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="readAllPersonIdsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="1" name="sourcedIdSet" type="tns:ArrayOfString" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="readPersonIdsFromSavePointRequest">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="1" maxOccurs="1" name="fromSavePoint" type="xs:dateTime" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="readPersonIdsFromSavePointResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="1" name="sourcedIdSet" type="tns:ArrayOfString" />
+        <xs:element minOccurs="0" maxOccurs="1" name="savePoint" type="xs:dateTime" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="readPersonsRequest">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="1" name="sourcedIdSet" type="tns:ArrayOfString" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:complexType name="ArrayOfPersonRecordType">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="personRecord" type="tns:PersonRecord.Type" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="readPersonsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="1" name="personRecordSet" type="tns:ArrayOfPersonRecordType" />
+        <xs:element minOccurs="0" maxOccurs="1" name="savePoint" type="xs:dateTime" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="readPersonsFromSavePointRequest">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="1" maxOccurs="1" name="fromSavePoint" type="xs:dateTime" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="readPersonsFromSavePointResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="1" name="personRecordSet" type="tns:ArrayOfPersonRecordType" />
+        <xs:element minOccurs="0" maxOccurs="1" name="savePoint" type="xs:dateTime" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="updatePersonRequest">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="1" name="sourcedId" type="xs:string" />
+        <xs:element minOccurs="0" maxOccurs="1" name="personRecord" type="tns:PersonRecord.Type" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="replacePersonRequest">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="1" name="sourcedId" type="xs:string" />
+        <xs:element minOccurs="0" maxOccurs="1" name="personRecord" type="tns:PersonRecord.Type" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="discoverPersonIdsRequest">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="1" name="queryObject" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="discoverPersonIdsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="1" name="sourcedIdSet" type="tns:ArrayOfString" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="changePersonIdentifierRequest">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="1" name="sourcedId" type="xs:string" />
+        <xs:element minOccurs="0" maxOccurs="1" name="newSourcedId" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

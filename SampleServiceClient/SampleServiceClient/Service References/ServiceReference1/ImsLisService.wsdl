@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://www.imsglobal.org/services/lis/pms2p0/wsdl11/sync/imspms_v2p0" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.imsglobal.org/services/lis/pms2p0/wsdl11/sync/imspms_v2p0" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://www.imsglobal.org/services/lis/pms2p0/wsdl11/sync/imspms_v2p0/Imports">
+      <xsd:import schemaLocation="https://localhost/imslis/ImsLisService.svc?xsd=xsd0" namespace="http://www.imsglobal.org/services/lis/pms2p0/wsdl11/sync/imspms_v2p0" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="createPersonRequest1">
+    <wsdl:part name="createPersonRequest" element="tns:createPersonRequest" />
+  </wsdl:message>
+  <wsdl:message name="createPersonRequest1_Headers">
+    <wsdl:part name="imsx_syncRequestHeaderInfo" element="tns:imsx_syncRequestHeaderInfo" />
+  </wsdl:message>
+  <wsdl:message name="createPersonResponse" />
+  <wsdl:message name="createPersonResponse_Headers">
+    <wsdl:part name="imsx_syncResponseHeaderInfo" element="tns:imsx_syncResponseHeaderInfo" />
+  </wsdl:message>
+  <wsdl:message name="createByProxyPersonRequest1">
+    <wsdl:part name="createByProxyPersonRequest" element="tns:createByProxyPersonRequest" />
+  </wsdl:message>
+  <wsdl:message name="createByProxyPersonRequest1_Headers">
+    <wsdl:part name="imsx_syncRequestHeaderInfo" element="tns:imsx_syncRequestHeaderInfo" />
+  </wsdl:message>
+  <wsdl:message name="createByProxyPersonResponse1">
+    <wsdl:part name="createByProxyPersonResponse" element="tns:createByProxyPersonResponse" />
+  </wsdl:message>
+  <wsdl:message name="createByProxyPersonResponse1_Headers">
+    <wsdl:part name="imsx_syncResponseHeaderInfo" element="tns:imsx_syncResponseHeaderInfo" />
+  </wsdl:message>
+  <wsdl:message name="deletePersonRequest1">
+    <wsdl:part name="deletePersonRequest" element="tns:deletePersonRequest" />
+  </wsdl:message>
+  <wsdl:message name="deletePersonRequest1_Headers">
+    <wsdl:part name="imsx_syncRequestHeaderInfo" element="tns:imsx_syncRequestHeaderInfo" />
+  </wsdl:message>
+  <wsdl:message name="deletePersonResponse" />
+  <wsdl:message name="deletePersonResponse_Headers">
+    <wsdl:part name="imsx_syncResponseHeaderInfo" element="tns:imsx_syncResponseHeaderInfo" />
+  </wsdl:message>
+  <wsdl:message name="readPersonRequest1">
+    <wsdl:part name="readPersonRequest" element="tns:readPersonRequest" />
+  </wsdl:message>
+  <wsdl:message name="readPersonRequest1_Headers">
+    <wsdl:part name="imsx_syncRequestHeaderInfo" element="tns:imsx_syncRequestHeaderInfo" />
+  </wsdl:message>
+  <wsdl:message name="readPersonResponse1">
+    <wsdl:part name="readPersonResponse" element="tns:readPersonResponse" />
+  </wsdl:message>
+  <wsdl:message name="readPersonResponse1_Headers">
+    <wsdl:part name="imsx_syncResponseHeaderInfo" element="tns:imsx_syncResponseHeaderInfo" />
+  </wsdl:message>
+  <wsdl:message name="readPersonCoreRequest1">
+    <wsdl:part name="readPersonCoreRequest" element="tns:readPersonCoreRequest" />
+  </wsdl:message>
+  <wsdl:message name="readPersonCoreRequest1_Headers">
+    <wsdl:part name="imsx_syncRequestHeaderInfo" element="tns:imsx_syncRequestHeaderInfo" />
+  </wsdl:message>
+  <wsdl:message name="readPersonCoreResponse1">
+    <wsdl:part name="readPersonCoreResponse" element="tns:readPersonCoreResponse" />
+  </wsdl:message>
+  <wsdl:message name="readPersonCoreResponse1_Headers">
+    <wsdl:part name="imsx_syncResponseHeaderInfo" element="tns:imsx_syncResponseHeaderInfo" />
+  </wsdl:message>
+  <wsdl:message name="readAllPersonIdsRequest">
+    <wsdl:part name="readAllPersonIdsRequest" element="tns:readAllPersonIdsRequest" />
+  </wsdl:message>
+  <wsdl:message name="readAllPersonIdsRequest_Headers">
+    <wsdl:part name="imsx_syncRequestHeaderInfo" element="tns:imsx_syncRequestHeaderInfo" />
+  </wsdl:message>
+  <wsdl:message name="readAllPersonIdsResponse1">
+    <wsdl:part name="readAllPersonIdsResponse" element="tns:readAllPersonIdsResponse" />
+  </wsdl:message>
+  <wsdl:message name="readAllPersonIdsResponse1_Headers">
+    <wsdl:part name="imsx_syncResponseHeaderInfo" element="tns:imsx_syncResponseHeaderInfo" />
+  </wsdl:message>
+  <wsdl:message name="readPersonIdsFromSavePointRequest1">
+    <wsdl:part name="readPersonIdsFromSavePointRequest" element="tns:readPersonIdsFromSavePointRequest" />
+  </wsdl:message>
+  <wsdl:message name="readPersonIdsFromSavePointRequest1_Headers">
+    <wsdl:part name="imsx_syncRequestHeaderInfo" element="tns:imsx_syncRequestHeaderInfo" />
+  </wsdl:message>
+  <wsdl:message name="readPersonIdsFromSavePointResponse1">
+    <wsdl:part name="readPersonIdsFromSavePointResponse" element="tns:readPersonIdsFromSavePointResponse" />
+  </wsdl:message>
+  <wsdl:message name="readPersonIdsFromSavePointResponse1_Headers">
+    <wsdl:part name="imsx_syncResponseHeaderInfo" element="tns:imsx_syncResponseHeaderInfo" />
+  </wsdl:message>
+  <wsdl:message name="readPersonsRequest1">
+    <wsdl:part name="readPersonsRequest" element="tns:readPersonsRequest" />
+  </wsdl:message>
+  <wsdl:message name="readPersonsRequest1_Headers">
+    <wsdl:part name="imsx_syncRequestHeaderInfo" element="tns:imsx_syncRequestHeaderInfo" />
+  </wsdl:message>
+  <wsdl:message name="readPersonsResponse1">
+    <wsdl:part name="readPersonsResponse" element="tns:readPersonsResponse" />
+  </wsdl:message>
+  <wsdl:message name="readPersonsResponse1_Headers">
+    <wsdl:part name="imsx_syncResponseHeaderInfo" element="tns:imsx_syncResponseHeaderInfo" />
+  </wsdl:message>
+  <wsdl:message name="readPersonsFromSavePointRequest1">
+    <wsdl:part name="readPersonsFromSavePointRequest" element="tns:readPersonsFromSavePointRequest" />
+  </wsdl:message>
+  <wsdl:message name="readPersonsFromSavePointRequest1_Headers">
+    <wsdl:part name="imsx_syncRequestHeaderInfo" element="tns:imsx_syncRequestHeaderInfo" />
+  </wsdl:message>
+  <wsdl:message name="readPersonsFromSavePointResponse1">
+    <wsdl:part name="readPersonsFromSavePointResponse" element="tns:readPersonsFromSavePointResponse" />
+  </wsdl:message>
+  <wsdl:message name="readPersonsFromSavePointResponse1_Headers">
+    <wsdl:part name="imsx_syncResponseHeaderInfo" element="tns:imsx_syncResponseHeaderInfo" />
+  </wsdl:message>
+  <wsdl:message name="updatePersonRequest1">
+    <wsdl:part name="updatePersonRequest" element="tns:updatePersonRequest" />
+  </wsdl:message>
+  <wsdl:message name="updatePersonRequest1_Headers">
+    <wsdl:part name="imsx_syncRequestHeaderInfo" element="tns:imsx_syncRequestHeaderInfo" />
+  </wsdl:message>
+  <wsdl:message name="updatePersonResponse" />
+  <wsdl:message name="updatePersonResponse_Headers">
+    <wsdl:part name="imsx_syncResponseHeaderInfo" element="tns:imsx_syncResponseHeaderInfo" />
+  </wsdl:message>
+  <wsdl:message name="replacePersonRequest1">
+    <wsdl:part name="replacePersonRequest" element="tns:replacePersonRequest" />
+  </wsdl:message>
+  <wsdl:message name="replacePersonRequest1_Headers">
+    <wsdl:part name="imsx_syncRequestHeaderInfo" element="tns:imsx_syncRequestHeaderInfo" />
+  </wsdl:message>
+  <wsdl:message name="replacePersonResponse" />
+  <wsdl:message name="replacePersonResponse_Headers">
+    <wsdl:part name="imsx_syncResponseHeaderInfo" element="tns:imsx_syncResponseHeaderInfo" />
+  </wsdl:message>
+  <wsdl:message name="discoverPersonIdsRequest1">
+    <wsdl:part name="discoverPersonIdsRequest" element="tns:discoverPersonIdsRequest" />
+  </wsdl:message>
+  <wsdl:message name="discoverPersonIdsRequest1_Headers">
+    <wsdl:part name="imsx_syncRequestHeaderInfo" element="tns:imsx_syncRequestHeaderInfo" />
+  </wsdl:message>
+  <wsdl:message name="discoverPersonIdsResponse1">
+    <wsdl:part name="discoverPersonIdsResponse" element="tns:discoverPersonIdsResponse" />
+  </wsdl:message>
+  <wsdl:message name="discoverPersonIdsResponse1_Headers">
+    <wsdl:part name="imsx_syncResponseHeaderInfo" element="tns:imsx_syncResponseHeaderInfo" />
+  </wsdl:message>
+  <wsdl:message name="changePersonIdentifierRequest1">
+    <wsdl:part name="changePersonIdentifierRequest" element="tns:changePersonIdentifierRequest" />
+  </wsdl:message>
+  <wsdl:message name="changePersonIdentifierRequest1_Headers">
+    <wsdl:part name="imsx_syncRequestHeaderInfo" element="tns:imsx_syncRequestHeaderInfo" />
+  </wsdl:message>
+  <wsdl:message name="changePersonIdentifierResponse" />
+  <wsdl:message name="changePersonIdentifierResponse_Headers">
+    <wsdl:part name="imsx_syncResponseHeaderInfo" element="tns:imsx_syncResponseHeaderInfo" />
+  </wsdl:message>
+  <wsdl:portType name="IPersonManagerSyncPortType">
+    <wsdl:operation name="createPerson">
+      <wsdl:input wsaw:Action="http://www.imsglobal.org/services/lis/pms2p0/wsdl11/sync/imspms_v2p0/IPersonManagerSyncPortType/createPerson" name="createPersonRequest1" message="tns:createPersonRequest1" />
+      <wsdl:output wsaw:Action="http://www.imsglobal.org/services/lis/pms2p0/wsdl11/sync/imspms_v2p0/IPersonManagerSyncPortType/createPersonResponse" name="createPersonResponse" message="tns:createPersonResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="createByProxyPerson">
+      <wsdl:input wsaw:Action="http://www.imsglobal.org/services/lis/pms2p0/wsdl11/sync/imspms_v2p0/IPersonManagerSyncPortType/createByProxyPerson" name="createByProxyPersonRequest1" message="tns:createByProxyPersonRequest1" />
+      <wsdl:output wsaw:Action="http://www.imsglobal.org/services/lis/pms2p0/wsdl11/sync/imspms_v2p0/IPersonManagerSyncPortType/createByProxyPersonResponse" name="createByProxyPersonResponse1" message="tns:createByProxyPersonResponse1" />
+    </wsdl:operation>
+    <wsdl:operation name="deletePerson">
+      <wsdl:input wsaw:Action="http://www.imsglobal.org/services/lis/pms2p0/wsdl11/sync/imspms_v2p0/IPersonManagerSyncPortType/deletePerson" name="deletePersonRequest1" message="tns:deletePersonRequest1" />
+      <wsdl:output wsaw:Action="http://www.imsglobal.org/services/lis/pms2p0/wsdl11/sync/imspms_v2p0/IPersonManagerSyncPortType/deletePersonResponse" name="deletePersonResponse" message="tns:deletePersonResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="readPerson">
+      <wsdl:input wsaw:Action="http://www.imsglobal.org/services/lis/pms2p0/wsdl11/sync/imspms_v2p0/IPersonManagerSyncPortType/readPerson" name="readPersonRequest1" message="tns:readPersonRequest1" />
+      <wsdl:output wsaw:Action="http://www.imsglobal.org/services/lis/pms2p0/wsdl11/sync/imspms_v2p0/IPersonManagerSyncPortType/readPersonResponse" name="readPersonResponse1" message="tns:readPersonResponse1" />
+    </wsdl:operation>
+    <wsdl:operation name="readPersonCore">
+      <wsdl:input wsaw:Action="http://www.imsglobal.org/services/lis/pms2p0/wsdl11/sync/imspms_v2p0/IPersonManagerSyncPortType/readPersonCore" name="readPersonCoreRequest1" message="tns:readPersonCoreRequest1" />
+      <wsdl:output wsaw:Action="http://www.imsglobal.org/services/lis/pms2p0/wsdl11/sync/imspms_v2p0/IPersonManagerSyncPortType/readPersonCoreResponse" name="readPersonCoreResponse1" message="tns:readPersonCoreResponse1" />
+    </wsdl:operation>
+    <wsdl:operation name="readAllPersonIds">
+      <wsdl:input wsaw:Action="http://www.imsglobal.org/services/lis/pms2p0/wsdl11/sync/imspms_v2p0/IPersonManagerSyncPortType/readAllPersonIds" name="readAllPersonIdsRequest" message="tns:readAllPersonIdsRequest" />
+      <wsdl:output wsaw:Action="http://www.imsglobal.org/services/lis/pms2p0/wsdl11/sync/imspms_v2p0/IPersonManagerSyncPortType/readAllPersonIdsResponse" name="readAllPersonIdsResponse1" message="tns:readAllPersonIdsResponse1" />
+    </wsdl:operation>
+    <wsdl:operation name="readPersonIdsFromSavePoint">
+      <wsdl:input wsaw:Action="http://www.imsglobal.org/services/lis/pms2p0/wsdl11/sync/imspms_v2p0/IPersonManagerSyncPortType/readPersonIdsFromSavePoint" name="readPersonIdsFromSavePointRequest1" message="tns:readPersonIdsFromSavePointRequest1" />
+      <wsdl:output wsaw:Action="http://www.imsglobal.org/services/lis/pms2p0/wsdl11/sync/imspms_v2p0/IPersonManagerSyncPortType/readPersonIdsFromSavePointResponse" name="readPersonIdsFromSavePointResponse1" message="tns:readPersonIdsFromSavePointResponse1" />
+    </wsdl:operation>
+    <wsdl:operation name="readPersons">
+      <wsdl:input wsaw:Action="http://www.imsglobal.org/services/lis/pms2p0/wsdl11/sync/imspms_v2p0/IPersonManagerSyncPortType/readPersons" name="readPersonsRequest1" message="tns:readPersonsRequest1" />
+      <wsdl:output wsaw:Action="http://www.imsglobal.org/services/lis/pms2p0/wsdl11/sync/imspms_v2p0/IPersonManagerSyncPortType/readPersonsResponse" name="readPersonsResponse1" message="tns:readPersonsResponse1" />
+    </wsdl:operation>
+    <wsdl:operation name="readPersonsFromSavePoint">
+      <wsdl:input wsaw:Action="http://www.imsglobal.org/services/lis/pms2p0/wsdl11/sync/imspms_v2p0/IPersonManagerSyncPortType/readPersonsFromSavePoint" name="readPersonsFromSavePointRequest1" message="tns:readPersonsFromSavePointRequest1" />
+      <wsdl:output wsaw:Action="http://www.imsglobal.org/services/lis/pms2p0/wsdl11/sync/imspms_v2p0/IPersonManagerSyncPortType/readPersonsFromSavePointResponse" name="readPersonsFromSavePointResponse1" message="tns:readPersonsFromSavePointResponse1" />
+    </wsdl:operation>
+    <wsdl:operation name="updatePerson">
+      <wsdl:input wsaw:Action="http://www.imsglobal.org/services/lis/pms2p0/wsdl11/sync/imspms_v2p0/IPersonManagerSyncPortType/updatePerson" name="updatePersonRequest1" message="tns:updatePersonRequest1" />
+      <wsdl:output wsaw:Action="http://www.imsglobal.org/services/lis/pms2p0/wsdl11/sync/imspms_v2p0/IPersonManagerSyncPortType/updatePersonResponse" name="updatePersonResponse" message="tns:updatePersonResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="replacePerson">
+      <wsdl:input wsaw:Action="http://www.imsglobal.org/services/lis/pms2p0/wsdl11/sync/imspms_v2p0/IPersonManagerSyncPortType/replacePerson" name="replacePersonRequest1" message="tns:replacePersonRequest1" />
+      <wsdl:output wsaw:Action="http://www.imsglobal.org/services/lis/pms2p0/wsdl11/sync/imspms_v2p0/IPersonManagerSyncPortType/replacePersonResponse" name="replacePersonResponse" message="tns:replacePersonResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="discoverPersonIds">
+      <wsdl:input wsaw:Action="http://www.imsglobal.org/services/lis/pms2p0/wsdl11/sync/imspms_v2p0/IPersonManagerSyncPortType/discoverPersonIds" name="discoverPersonIdsRequest1" message="tns:discoverPersonIdsRequest1" />
+      <wsdl:output wsaw:Action="http://www.imsglobal.org/services/lis/pms2p0/wsdl11/sync/imspms_v2p0/IPersonManagerSyncPortType/discoverPersonIdsResponse" name="discoverPersonIdsResponse1" message="tns:discoverPersonIdsResponse1" />
+    </wsdl:operation>
+    <wsdl:operation name="changePersonIdentifier">
+      <wsdl:input wsaw:Action="http://www.imsglobal.org/services/lis/pms2p0/wsdl11/sync/imspms_v2p0/IPersonManagerSyncPortType/changePersonIdentifier" name="changePersonIdentifierRequest1" message="tns:changePersonIdentifierRequest1" />
+      <wsdl:output wsaw:Action="http://www.imsglobal.org/services/lis/pms2p0/wsdl11/sync/imspms_v2p0/IPersonManagerSyncPortType/changePersonIdentifierResponse" name="changePersonIdentifierResponse" message="tns:changePersonIdentifierResponse" />
+    </wsdl:operation>
+  </wsdl:portType>
+</wsdl:definitions>

@@ -1,0 +1,844 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:i0="http://www.imsglobal.org/services/lis/pms2p0/wsdl11/sync/imspms_v2p0" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="ImsLisService" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsp:Policy wsu:Id="MainEndpoint_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SymmetricBinding xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <wsp:Policy>
+            <sp:ProtectionToken>
+              <wsp:Policy>
+                <sp:SecureConversationToken sp:IncludeToken="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy/IncludeToken/AlwaysToRecipient">
+                  <wsp:Policy>
+                    <sp:RequireDerivedKeys />
+                    <sp:BootstrapPolicy>
+                      <wsp:Policy>
+                        <sp:SignedParts>
+                          <sp:Body />
+                          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+                          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+                          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+                          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+                          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+                          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+                          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+                        </sp:SignedParts>
+                        <sp:EncryptedParts>
+                          <sp:Body />
+                        </sp:EncryptedParts>
+                        <sp:SymmetricBinding>
+                          <wsp:Policy>
+                            <sp:ProtectionToken>
+                              <wsp:Policy>
+                                <mssp:SslContextToken sp:IncludeToken="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy/IncludeToken/AlwaysToRecipient" xmlns:mssp="http://schemas.microsoft.com/ws/2005/07/securitypolicy">
+                                  <wsp:Policy>
+                                    <sp:RequireDerivedKeys />
+                                  </wsp:Policy>
+                                </mssp:SslContextToken>
+                              </wsp:Policy>
+                            </sp:ProtectionToken>
+                            <sp:AlgorithmSuite>
+                              <wsp:Policy>
+                                <sp:Basic256 />
+                              </wsp:Policy>
+                            </sp:AlgorithmSuite>
+                            <sp:Layout>
+                              <wsp:Policy>
+                                <sp:Strict />
+                              </wsp:Policy>
+                            </sp:Layout>
+                            <sp:IncludeTimestamp />
+                            <sp:EncryptSignature />
+                            <sp:OnlySignEntireHeadersAndBody />
+                          </wsp:Policy>
+                        </sp:SymmetricBinding>
+                        <sp:SignedSupportingTokens>
+                          <wsp:Policy>
+                            <sp:UsernameToken sp:IncludeToken="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy/IncludeToken/AlwaysToRecipient">
+                              <wsp:Policy>
+                                <sp:WssUsernameToken10 />
+                              </wsp:Policy>
+                            </sp:UsernameToken>
+                          </wsp:Policy>
+                        </sp:SignedSupportingTokens>
+                        <sp:Wss11>
+                          <wsp:Policy />
+                        </sp:Wss11>
+                        <sp:Trust10>
+                          <wsp:Policy>
+                            <sp:MustSupportIssuedTokens />
+                            <sp:RequireClientEntropy />
+                            <sp:RequireServerEntropy />
+                          </wsp:Policy>
+                        </sp:Trust10>
+                      </wsp:Policy>
+                    </sp:BootstrapPolicy>
+                  </wsp:Policy>
+                </sp:SecureConversationToken>
+              </wsp:Policy>
+            </sp:ProtectionToken>
+            <sp:AlgorithmSuite>
+              <wsp:Policy>
+                <sp:Basic256 />
+              </wsp:Policy>
+            </sp:AlgorithmSuite>
+            <sp:Layout>
+              <wsp:Policy>
+                <sp:Strict />
+              </wsp:Policy>
+            </sp:Layout>
+            <sp:IncludeTimestamp />
+            <sp:EncryptSignature />
+            <sp:OnlySignEntireHeadersAndBody />
+          </wsp:Policy>
+        </sp:SymmetricBinding>
+        <sp:Wss11 xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <wsp:Policy />
+        </sp:Wss11>
+        <sp:Trust10 xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <wsp:Policy>
+            <sp:MustSupportIssuedTokens />
+            <sp:RequireClientEntropy />
+            <sp:RequireServerEntropy />
+          </wsp:Policy>
+        </sp:Trust10>
+        <wsaw:UsingAddressing />
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="MainEndpoint_createPerson_Input_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="imsx_syncRequestHeaderInfo" Namespace="http://www.imsglobal.org/services/lis/pms2p0/wsdl11/sync/imspms_v2p0" />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="imsx_syncRequestHeaderInfo" Namespace="http://www.imsglobal.org/services/lis/pms2p0/wsdl11/sync/imspms_v2p0" />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="MainEndpoint_createPerson_output_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="imsx_syncResponseHeaderInfo" Namespace="http://www.imsglobal.org/services/lis/pms2p0/wsdl11/sync/imspms_v2p0" />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="imsx_syncResponseHeaderInfo" Namespace="http://www.imsglobal.org/services/lis/pms2p0/wsdl11/sync/imspms_v2p0" />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="MainEndpoint_createByProxyPerson_Input_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="imsx_syncRequestHeaderInfo" Namespace="http://www.imsglobal.org/services/lis/pms2p0/wsdl11/sync/imspms_v2p0" />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="imsx_syncRequestHeaderInfo" Namespace="http://www.imsglobal.org/services/lis/pms2p0/wsdl11/sync/imspms_v2p0" />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="MainEndpoint_createByProxyPerson_output_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="imsx_syncResponseHeaderInfo" Namespace="http://www.imsglobal.org/services/lis/pms2p0/wsdl11/sync/imspms_v2p0" />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="imsx_syncResponseHeaderInfo" Namespace="http://www.imsglobal.org/services/lis/pms2p0/wsdl11/sync/imspms_v2p0" />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="MainEndpoint_deletePerson_Input_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="imsx_syncRequestHeaderInfo" Namespace="http://www.imsglobal.org/services/lis/pms2p0/wsdl11/sync/imspms_v2p0" />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="imsx_syncRequestHeaderInfo" Namespace="http://www.imsglobal.org/services/lis/pms2p0/wsdl11/sync/imspms_v2p0" />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="MainEndpoint_deletePerson_output_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="imsx_syncResponseHeaderInfo" Namespace="http://www.imsglobal.org/services/lis/pms2p0/wsdl11/sync/imspms_v2p0" />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="imsx_syncResponseHeaderInfo" Namespace="http://www.imsglobal.org/services/lis/pms2p0/wsdl11/sync/imspms_v2p0" />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="MainEndpoint_readPerson_Input_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="imsx_syncRequestHeaderInfo" Namespace="http://www.imsglobal.org/services/lis/pms2p0/wsdl11/sync/imspms_v2p0" />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="imsx_syncRequestHeaderInfo" Namespace="http://www.imsglobal.org/services/lis/pms2p0/wsdl11/sync/imspms_v2p0" />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="MainEndpoint_readPerson_output_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="imsx_syncResponseHeaderInfo" Namespace="http://www.imsglobal.org/services/lis/pms2p0/wsdl11/sync/imspms_v2p0" />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="imsx_syncResponseHeaderInfo" Namespace="http://www.imsglobal.org/services/lis/pms2p0/wsdl11/sync/imspms_v2p0" />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="MainEndpoint_readPersonCore_Input_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="imsx_syncRequestHeaderInfo" Namespace="http://www.imsglobal.org/services/lis/pms2p0/wsdl11/sync/imspms_v2p0" />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="imsx_syncRequestHeaderInfo" Namespace="http://www.imsglobal.org/services/lis/pms2p0/wsdl11/sync/imspms_v2p0" />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="MainEndpoint_readPersonCore_output_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="imsx_syncResponseHeaderInfo" Namespace="http://www.imsglobal.org/services/lis/pms2p0/wsdl11/sync/imspms_v2p0" />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="imsx_syncResponseHeaderInfo" Namespace="http://www.imsglobal.org/services/lis/pms2p0/wsdl11/sync/imspms_v2p0" />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="MainEndpoint_readAllPersonIds_Input_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="imsx_syncRequestHeaderInfo" Namespace="http://www.imsglobal.org/services/lis/pms2p0/wsdl11/sync/imspms_v2p0" />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="imsx_syncRequestHeaderInfo" Namespace="http://www.imsglobal.org/services/lis/pms2p0/wsdl11/sync/imspms_v2p0" />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="MainEndpoint_readAllPersonIds_output_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="imsx_syncResponseHeaderInfo" Namespace="http://www.imsglobal.org/services/lis/pms2p0/wsdl11/sync/imspms_v2p0" />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="imsx_syncResponseHeaderInfo" Namespace="http://www.imsglobal.org/services/lis/pms2p0/wsdl11/sync/imspms_v2p0" />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="MainEndpoint_readPersonIdsFromSavePoint_Input_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="imsx_syncRequestHeaderInfo" Namespace="http://www.imsglobal.org/services/lis/pms2p0/wsdl11/sync/imspms_v2p0" />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="imsx_syncRequestHeaderInfo" Namespace="http://www.imsglobal.org/services/lis/pms2p0/wsdl11/sync/imspms_v2p0" />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="MainEndpoint_readPersonIdsFromSavePoint_output_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="imsx_syncResponseHeaderInfo" Namespace="http://www.imsglobal.org/services/lis/pms2p0/wsdl11/sync/imspms_v2p0" />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="imsx_syncResponseHeaderInfo" Namespace="http://www.imsglobal.org/services/lis/pms2p0/wsdl11/sync/imspms_v2p0" />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="MainEndpoint_readPersons_Input_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="imsx_syncRequestHeaderInfo" Namespace="http://www.imsglobal.org/services/lis/pms2p0/wsdl11/sync/imspms_v2p0" />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="imsx_syncRequestHeaderInfo" Namespace="http://www.imsglobal.org/services/lis/pms2p0/wsdl11/sync/imspms_v2p0" />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="MainEndpoint_readPersons_output_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="imsx_syncResponseHeaderInfo" Namespace="http://www.imsglobal.org/services/lis/pms2p0/wsdl11/sync/imspms_v2p0" />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="imsx_syncResponseHeaderInfo" Namespace="http://www.imsglobal.org/services/lis/pms2p0/wsdl11/sync/imspms_v2p0" />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="MainEndpoint_readPersonsFromSavePoint_Input_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="imsx_syncRequestHeaderInfo" Namespace="http://www.imsglobal.org/services/lis/pms2p0/wsdl11/sync/imspms_v2p0" />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="imsx_syncRequestHeaderInfo" Namespace="http://www.imsglobal.org/services/lis/pms2p0/wsdl11/sync/imspms_v2p0" />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="MainEndpoint_readPersonsFromSavePoint_output_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="imsx_syncResponseHeaderInfo" Namespace="http://www.imsglobal.org/services/lis/pms2p0/wsdl11/sync/imspms_v2p0" />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="imsx_syncResponseHeaderInfo" Namespace="http://www.imsglobal.org/services/lis/pms2p0/wsdl11/sync/imspms_v2p0" />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="MainEndpoint_updatePerson_Input_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="imsx_syncRequestHeaderInfo" Namespace="http://www.imsglobal.org/services/lis/pms2p0/wsdl11/sync/imspms_v2p0" />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="imsx_syncRequestHeaderInfo" Namespace="http://www.imsglobal.org/services/lis/pms2p0/wsdl11/sync/imspms_v2p0" />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="MainEndpoint_updatePerson_output_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="imsx_syncResponseHeaderInfo" Namespace="http://www.imsglobal.org/services/lis/pms2p0/wsdl11/sync/imspms_v2p0" />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="imsx_syncResponseHeaderInfo" Namespace="http://www.imsglobal.org/services/lis/pms2p0/wsdl11/sync/imspms_v2p0" />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="MainEndpoint_replacePerson_Input_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="imsx_syncRequestHeaderInfo" Namespace="http://www.imsglobal.org/services/lis/pms2p0/wsdl11/sync/imspms_v2p0" />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="imsx_syncRequestHeaderInfo" Namespace="http://www.imsglobal.org/services/lis/pms2p0/wsdl11/sync/imspms_v2p0" />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="MainEndpoint_replacePerson_output_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="imsx_syncResponseHeaderInfo" Namespace="http://www.imsglobal.org/services/lis/pms2p0/wsdl11/sync/imspms_v2p0" />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="imsx_syncResponseHeaderInfo" Namespace="http://www.imsglobal.org/services/lis/pms2p0/wsdl11/sync/imspms_v2p0" />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="MainEndpoint_discoverPersonIds_Input_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="imsx_syncRequestHeaderInfo" Namespace="http://www.imsglobal.org/services/lis/pms2p0/wsdl11/sync/imspms_v2p0" />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="imsx_syncRequestHeaderInfo" Namespace="http://www.imsglobal.org/services/lis/pms2p0/wsdl11/sync/imspms_v2p0" />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="MainEndpoint_discoverPersonIds_output_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="imsx_syncResponseHeaderInfo" Namespace="http://www.imsglobal.org/services/lis/pms2p0/wsdl11/sync/imspms_v2p0" />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="imsx_syncResponseHeaderInfo" Namespace="http://www.imsglobal.org/services/lis/pms2p0/wsdl11/sync/imspms_v2p0" />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="MainEndpoint_changePersonIdentifier_Input_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="imsx_syncRequestHeaderInfo" Namespace="http://www.imsglobal.org/services/lis/pms2p0/wsdl11/sync/imspms_v2p0" />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="imsx_syncRequestHeaderInfo" Namespace="http://www.imsglobal.org/services/lis/pms2p0/wsdl11/sync/imspms_v2p0" />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="MainEndpoint_changePersonIdentifier_output_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="imsx_syncResponseHeaderInfo" Namespace="http://www.imsglobal.org/services/lis/pms2p0/wsdl11/sync/imspms_v2p0" />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="imsx_syncResponseHeaderInfo" Namespace="http://www.imsglobal.org/services/lis/pms2p0/wsdl11/sync/imspms_v2p0" />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsdl:import namespace="http://www.imsglobal.org/services/lis/pms2p0/wsdl11/sync/imspms_v2p0" location="https://localhost/imslis/ImsLisService.svc?wsdl=wsdl0" />
+  <wsdl:types />
+  <wsdl:binding name="MainEndpoint" type="i0:IPersonManagerSyncPortType">
+    <wsp:PolicyReference URI="#MainEndpoint_policy" />
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="createPerson">
+      <soap12:operation soapAction="http://www.imsglobal.org/services/lis/pms2p0/wsdl11/sync/imspms_v2p0/IPersonManagerSyncPortType/createPerson" style="document" />
+      <wsdl:input name="createPersonRequest1">
+        <wsp:PolicyReference URI="#MainEndpoint_createPerson_Input_policy" />
+        <soap12:header message="i0:createPersonRequest1_Headers" part="imsx_syncRequestHeaderInfo" use="literal" />
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="createPersonResponse">
+        <wsp:PolicyReference URI="#MainEndpoint_createPerson_output_policy" />
+        <soap12:header message="i0:createPersonResponse_Headers" part="imsx_syncResponseHeaderInfo" use="literal" />
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="createByProxyPerson">
+      <soap12:operation soapAction="http://www.imsglobal.org/services/lis/pms2p0/wsdl11/sync/imspms_v2p0/IPersonManagerSyncPortType/createByProxyPerson" style="document" />
+      <wsdl:input name="createByProxyPersonRequest1">
+        <wsp:PolicyReference URI="#MainEndpoint_createByProxyPerson_Input_policy" />
+        <soap12:header message="i0:createByProxyPersonRequest1_Headers" part="imsx_syncRequestHeaderInfo" use="literal" />
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="createByProxyPersonResponse1">
+        <wsp:PolicyReference URI="#MainEndpoint_createByProxyPerson_output_policy" />
+        <soap12:header message="i0:createByProxyPersonResponse1_Headers" part="imsx_syncResponseHeaderInfo" use="literal" />
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="deletePerson">
+      <soap12:operation soapAction="http://www.imsglobal.org/services/lis/pms2p0/wsdl11/sync/imspms_v2p0/IPersonManagerSyncPortType/deletePerson" style="document" />
+      <wsdl:input name="deletePersonRequest1">
+        <wsp:PolicyReference URI="#MainEndpoint_deletePerson_Input_policy" />
+        <soap12:header message="i0:deletePersonRequest1_Headers" part="imsx_syncRequestHeaderInfo" use="literal" />
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="deletePersonResponse">
+        <wsp:PolicyReference URI="#MainEndpoint_deletePerson_output_policy" />
+        <soap12:header message="i0:deletePersonResponse_Headers" part="imsx_syncResponseHeaderInfo" use="literal" />
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="readPerson">
+      <soap12:operation soapAction="http://www.imsglobal.org/services/lis/pms2p0/wsdl11/sync/imspms_v2p0/IPersonManagerSyncPortType/readPerson" style="document" />
+      <wsdl:input name="readPersonRequest1">
+        <wsp:PolicyReference URI="#MainEndpoint_readPerson_Input_policy" />
+        <soap12:header message="i0:readPersonRequest1_Headers" part="imsx_syncRequestHeaderInfo" use="literal" />
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="readPersonResponse1">
+        <wsp:PolicyReference URI="#MainEndpoint_readPerson_output_policy" />
+        <soap12:header message="i0:readPersonResponse1_Headers" part="imsx_syncResponseHeaderInfo" use="literal" />
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="readPersonCore">
+      <soap12:operation soapAction="http://www.imsglobal.org/services/lis/pms2p0/wsdl11/sync/imspms_v2p0/IPersonManagerSyncPortType/readPersonCore" style="document" />
+      <wsdl:input name="readPersonCoreRequest1">
+        <wsp:PolicyReference URI="#MainEndpoint_readPersonCore_Input_policy" />
+        <soap12:header message="i0:readPersonCoreRequest1_Headers" part="imsx_syncRequestHeaderInfo" use="literal" />
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="readPersonCoreResponse1">
+        <wsp:PolicyReference URI="#MainEndpoint_readPersonCore_output_policy" />
+        <soap12:header message="i0:readPersonCoreResponse1_Headers" part="imsx_syncResponseHeaderInfo" use="literal" />
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="readAllPersonIds">
+      <soap12:operation soapAction="http://www.imsglobal.org/services/lis/pms2p0/wsdl11/sync/imspms_v2p0/IPersonManagerSyncPortType/readAllPersonIds" style="document" />
+      <wsdl:input name="readAllPersonIdsRequest">
+        <wsp:PolicyReference URI="#MainEndpoint_readAllPersonIds_Input_policy" />
+        <soap12:header message="i0:readAllPersonIdsRequest_Headers" part="imsx_syncRequestHeaderInfo" use="literal" />
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="readAllPersonIdsResponse1">
+        <wsp:PolicyReference URI="#MainEndpoint_readAllPersonIds_output_policy" />
+        <soap12:header message="i0:readAllPersonIdsResponse1_Headers" part="imsx_syncResponseHeaderInfo" use="literal" />
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="readPersonIdsFromSavePoint">
+      <soap12:operation soapAction="http://www.imsglobal.org/services/lis/pms2p0/wsdl11/sync/imspms_v2p0/IPersonManagerSyncPortType/readPersonIdsFromSavePoint" style="document" />
+      <wsdl:input name="readPersonIdsFromSavePointRequest1">
+        <wsp:PolicyReference URI="#MainEndpoint_readPersonIdsFromSavePoint_Input_policy" />
+        <soap12:header message="i0:readPersonIdsFromSavePointRequest1_Headers" part="imsx_syncRequestHeaderInfo" use="literal" />
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="readPersonIdsFromSavePointResponse1">
+        <wsp:PolicyReference URI="#MainEndpoint_readPersonIdsFromSavePoint_output_policy" />
+        <soap12:header message="i0:readPersonIdsFromSavePointResponse1_Headers" part="imsx_syncResponseHeaderInfo" use="literal" />
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="readPersons">
+      <soap12:operation soapAction="http://www.imsglobal.org/services/lis/pms2p0/wsdl11/sync/imspms_v2p0/IPersonManagerSyncPortType/readPersons" style="document" />
+      <wsdl:input name="readPersonsRequest1">
+        <wsp:PolicyReference URI="#MainEndpoint_readPersons_Input_policy" />
+        <soap12:header message="i0:readPersonsRequest1_Headers" part="imsx_syncRequestHeaderInfo" use="literal" />
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="readPersonsResponse1">
+        <wsp:PolicyReference URI="#MainEndpoint_readPersons_output_policy" />
+        <soap12:header message="i0:readPersonsResponse1_Headers" part="imsx_syncResponseHeaderInfo" use="literal" />
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="readPersonsFromSavePoint">
+      <soap12:operation soapAction="http://www.imsglobal.org/services/lis/pms2p0/wsdl11/sync/imspms_v2p0/IPersonManagerSyncPortType/readPersonsFromSavePoint" style="document" />
+      <wsdl:input name="readPersonsFromSavePointRequest1">
+        <wsp:PolicyReference URI="#MainEndpoint_readPersonsFromSavePoint_Input_policy" />
+        <soap12:header message="i0:readPersonsFromSavePointRequest1_Headers" part="imsx_syncRequestHeaderInfo" use="literal" />
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="readPersonsFromSavePointResponse1">
+        <wsp:PolicyReference URI="#MainEndpoint_readPersonsFromSavePoint_output_policy" />
+        <soap12:header message="i0:readPersonsFromSavePointResponse1_Headers" part="imsx_syncResponseHeaderInfo" use="literal" />
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="updatePerson">
+      <soap12:operation soapAction="http://www.imsglobal.org/services/lis/pms2p0/wsdl11/sync/imspms_v2p0/IPersonManagerSyncPortType/updatePerson" style="document" />
+      <wsdl:input name="updatePersonRequest1">
+        <wsp:PolicyReference URI="#MainEndpoint_updatePerson_Input_policy" />
+        <soap12:header message="i0:updatePersonRequest1_Headers" part="imsx_syncRequestHeaderInfo" use="literal" />
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="updatePersonResponse">
+        <wsp:PolicyReference URI="#MainEndpoint_updatePerson_output_policy" />
+        <soap12:header message="i0:updatePersonResponse_Headers" part="imsx_syncResponseHeaderInfo" use="literal" />
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="replacePerson">
+      <soap12:operation soapAction="http://www.imsglobal.org/services/lis/pms2p0/wsdl11/sync/imspms_v2p0/IPersonManagerSyncPortType/replacePerson" style="document" />
+      <wsdl:input name="replacePersonRequest1">
+        <wsp:PolicyReference URI="#MainEndpoint_replacePerson_Input_policy" />
+        <soap12:header message="i0:replacePersonRequest1_Headers" part="imsx_syncRequestHeaderInfo" use="literal" />
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="replacePersonResponse">
+        <wsp:PolicyReference URI="#MainEndpoint_replacePerson_output_policy" />
+        <soap12:header message="i0:replacePersonResponse_Headers" part="imsx_syncResponseHeaderInfo" use="literal" />
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="discoverPersonIds">
+      <soap12:operation soapAction="http://www.imsglobal.org/services/lis/pms2p0/wsdl11/sync/imspms_v2p0/IPersonManagerSyncPortType/discoverPersonIds" style="document" />
+      <wsdl:input name="discoverPersonIdsRequest1">
+        <wsp:PolicyReference URI="#MainEndpoint_discoverPersonIds_Input_policy" />
+        <soap12:header message="i0:discoverPersonIdsRequest1_Headers" part="imsx_syncRequestHeaderInfo" use="literal" />
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="discoverPersonIdsResponse1">
+        <wsp:PolicyReference URI="#MainEndpoint_discoverPersonIds_output_policy" />
+        <soap12:header message="i0:discoverPersonIdsResponse1_Headers" part="imsx_syncResponseHeaderInfo" use="literal" />
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="changePersonIdentifier">
+      <soap12:operation soapAction="http://www.imsglobal.org/services/lis/pms2p0/wsdl11/sync/imspms_v2p0/IPersonManagerSyncPortType/changePersonIdentifier" style="document" />
+      <wsdl:input name="changePersonIdentifierRequest1">
+        <wsp:PolicyReference URI="#MainEndpoint_changePersonIdentifier_Input_policy" />
+        <soap12:header message="i0:changePersonIdentifierRequest1_Headers" part="imsx_syncRequestHeaderInfo" use="literal" />
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="changePersonIdentifierResponse">
+        <wsp:PolicyReference URI="#MainEndpoint_changePersonIdentifier_output_policy" />
+        <soap12:header message="i0:changePersonIdentifierResponse_Headers" part="imsx_syncResponseHeaderInfo" use="literal" />
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="ImsLisService">
+    <wsdl:port name="MainEndpoint" binding="tns:MainEndpoint">
+      <soap12:address location="http://vlad-zalman:8090/imslis/ImsLisService.svc" />
+      <wsa10:EndpointReference>
+        <wsa10:Address>http://vlad-zalman:8090/imslis/ImsLisService.svc</wsa10:Address>
+        <Identity xmlns="http://schemas.xmlsoap.org/ws/2006/02/addressingidentity">
+          <KeyInfo xmlns="http://www.w3.org/2000/09/xmldsig#">
+            <X509Data>
+              <X509Certificate>MIICAzCCAXCgAwIBAgIQ33lZjMRgcYxGqdSgNcNdKjAJBgUrDgMCHQUAMBQxEjAQBgNVBAMTCWNpcnJ1c3N2YzAeFw0xNDEwMDkyMDAwMDBaFw0xODEyMjEyMDAwMDBaMBQxEjAQBgNVBAMTCWNpcnJ1c3N2YzCBnzANBgkqhkiG9w0BAQEFAAOBjQAwgYkCgYEAomk2A4vI+t3fi0WqYiTgtAzK18x6Q9E1TSrhYqxagq7HHplVTMlPU7485ZGQYvDKrsmrh/pE/ml6+PnlJHgIA6vwdN9prZyMMGR35U8SKIGtKreZOb5TRetilkBKKGInhqKp1KERuk/eaocxfzR84KrIs4j2zZ2ERRoXd71zOJUCAwEAAaNeMFwwEwYDVR0lBAwwCgYIKwYBBQUHAwEwRQYDVR0BBD4wPIAQifVSroCcX2KKJu4u8krs8aEWMBQxEjAQBgNVBAMTCWNpcnJ1c3N2Y4IQ33lZjMRgcYxGqdSgNcNdKjAJBgUrDgMCHQUAA4GBAJR5TNp9pzsOVuvU6Op2l9m2GacUKFs0N+SRfyGIg4rFjz5U7z3WdV+p2uOLcoIUpaAVVIbdFl0LQ0Pwo3EmtZLIz9qY1OePf8Em1r9E08p1yJzPMK0LNSK5OJ6izVXSYGc7eoH8xSeUd/dUZnJhoWQmaF7H253XpfK+MVkwLvC6</X509Certificate>
+            </X509Data>
+          </KeyInfo>
+        </Identity>
+      </wsa10:EndpointReference>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
