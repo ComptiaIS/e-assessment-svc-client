@@ -16,11 +16,18 @@ namespace SampleServiceClient
             client.ClientCredentials.ServiceCertificate.Authentication.CertificateValidationMode = X509CertificateValidationMode.None;
             client.ClientCredentials.UserName.UserName = "user1";
             client.ClientCredentials.UserName.Password = "tratata";
+
+            // Create person
+            var sourceId = Guid.NewGuid();
             var hdr = new imsx_RequestHeaderInfoType();
             var req = new createPersonRequest();
-
-            req.personRecord = UserMapper.MapToRecord(new User { SourceId = Guid.NewGuid().ToString(), FirstName = "Vlad", LastName = "Ogay", Language = "en" });
+            req.personRecord = UserMapper.MapToRecord(new User { SourceId = sourceId.ToString(), FirstName = "Vlad", LastName = "Ogay", Language = "en" });
             client.createPerson(hdr, req);
+
+            // Read person that we've just created
+            var req2 = new readPersonRequest {sourcedId = sourceId.ToString()};
+            readPersonResponse resp2;
+            client.readPerson(hdr, req2, out resp2);
         }
     }
 }
