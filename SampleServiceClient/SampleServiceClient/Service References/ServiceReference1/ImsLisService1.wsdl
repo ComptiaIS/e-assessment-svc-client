@@ -651,7 +651,7 @@
       </wsp:All>
     </wsp:ExactlyOne>
   </wsp:Policy>
-  <wsdl:import namespace="http://www.imsglobal.org/services/lis/pms2p0/wsdl11/sync/imspms_v2p0" location="https://localhost/imslis/ImsLisService.svc?wsdl=wsdl0" />
+  <wsdl:import namespace="http://www.imsglobal.org/services/lis/pms2p0/wsdl11/sync/imspms_v2p0" location="https://svc.cirrusenv.ru/IMSLIS/ImsLisService.svc?wsdl=wsdl0" />
   <wsdl:types />
   <wsdl:binding name="MainEndpoint" type="i0:IPersonManagerSyncPortType">
     <wsp:PolicyReference URI="#MainEndpoint_policy" />
@@ -828,9 +828,9 @@
   </wsdl:binding>
   <wsdl:service name="ImsLisService">
     <wsdl:port name="MainEndpoint" binding="tns:MainEndpoint">
-      <soap12:address location="http://vlad-zalman:8090/imslis/ImsLisService.svc" />
+      <soap12:address location="http://svc.cirrusenv.ru/IMSLIS/ImsLisService.svc" />
       <wsa10:EndpointReference>
-        <wsa10:Address>http://vlad-zalman:8090/imslis/ImsLisService.svc</wsa10:Address>
+        <wsa10:Address>http://svc.cirrusenv.ru/IMSLIS/ImsLisService.svc</wsa10:Address>
         <Identity xmlns="http://schemas.xmlsoap.org/ws/2006/02/addressingidentity">
           <KeyInfo xmlns="http://www.w3.org/2000/09/xmldsig#">
             <X509Data>

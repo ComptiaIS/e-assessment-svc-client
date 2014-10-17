@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="be4cc241-61c1-45d8-9d8e-0d19e390eb7e" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="0199b7d3-fb97-464f-b8c6-567427c68a0c" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
   <ClientOptions>
     <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
     <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
@@ -19,13 +19,13 @@
     <ServiceContractMappings />
   </ClientOptions>
   <MetadataSources>
-    <MetadataSource Address="https://localhost/imslis/ImsLisService.svc" Protocol="http" SourceId="1" />
+    <MetadataSource Address="https://svc.cirrusenv.ru/IMSLIS/ImsLisService.svc" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="ImsLisService.disco" MetadataType="Disco" ID="c9ffb3a0-86b5-4acf-8d5a-889983c79133" SourceId="1" SourceUrl="https://localhost/imslis/ImsLisService.svc?disco" />
-    <MetadataFile FileName="ImsLisService.wsdl" MetadataType="Wsdl" ID="41a9886e-4690-4c36-a8e0-147a9f87a745" SourceId="1" SourceUrl="https://localhost/imslis/ImsLisService.svc?wsdl=wsdl0" />
-    <MetadataFile FileName="ImsLisService.xsd" MetadataType="Schema" ID="9bd9f7f0-fb22-47de-b67e-63232c95a6a0" SourceId="1" SourceUrl="https://localhost/imslis/ImsLisService.svc?xsd=xsd0" />
-    <MetadataFile FileName="ImsLisService1.wsdl" MetadataType="Wsdl" ID="6fd2cf40-196a-4568-b96b-9c915211958b" SourceId="1" SourceUrl="https://localhost/imslis/ImsLisService.svc?wsdl" />
+    <MetadataFile FileName="ImsLisService.xsd" MetadataType="Schema" ID="8b8c8547-1e3b-4a63-afe5-53c86208c8b6" SourceId="1" SourceUrl="https://svc.cirrusenv.ru/IMSLIS/ImsLisService.svc?xsd=xsd0" />
+    <MetadataFile FileName="ImsLisService.disco" MetadataType="Disco" ID="8106e0e3-c8b2-454f-a50f-c1355be6a187" SourceId="1" SourceUrl="https://svc.cirrusenv.ru/IMSLIS/ImsLisService.svc?disco" />
+    <MetadataFile FileName="ImsLisService.wsdl" MetadataType="Wsdl" ID="211d06b9-1079-4987-ac18-5f268df30728" SourceId="1" SourceUrl="https://svc.cirrusenv.ru/IMSLIS/ImsLisService.svc?wsdl=wsdl0" />
+    <MetadataFile FileName="ImsLisService1.wsdl" MetadataType="Wsdl" ID="727a1e91-a3da-4913-a198-541f5304763b" SourceId="1" SourceUrl="https://svc.cirrusenv.ru/IMSLIS/ImsLisService.svc?wsdl" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
